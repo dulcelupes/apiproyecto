@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    
+    <changeSet id="agregar-tabla-tecnicos" author="Dulce">
+        <createTable tableName="tecnicos">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="PK__TECNICOS__810FE24EC6C64D94"/>
+            </column>
+            <column name="usuario" type="varchar(20)"/>
+            <column name="nombre" type="varchar(100)"/>
+            <column name="puesto" type="varchar(50)"/>
+        </createTable>
+        <addUniqueConstraint columnNames="usuario" constraintName="UK_usuario" tableName="tecnicos"/>
+    </changeSet>
+    
+   <changeSet id="agregar-tabla-tareas" author="Dulce">
+    <createTable tableName="tareas">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="PK__TAREAS__B125498F72DA0919"/>
+            </column>
+            <column name="descripcion" type="varchar(500)"/>
+            <column name="fecha_creacion" type="datetime2"/>
+            <column name="estatus" type="varchar(100)"/>
+        </createTable>
+    </changeSet>    
+    
+    <changeSet id="agregar-tabla-tickets" author="Dulce">
+        <createTable tableName="tickets">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="PK__TICKETS__34DLO155C59A8C15"/>
+            </column>                     
+           
+            <column name="tecnicos_id" type="bigint"/>     
+            <column name="fecha_entrega" type="datetime2"/>
+            <column name="estatus" type="varchar(100)"/>   
+            <column name="tareas_id" type="bigint"/> 
+            <column name="correctiva" type="bit"/>  
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="tecnicos_id" baseTableName="tickets" constraintName="FK_tecnicos_tickets" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tecnicos" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="tareas_id" baseTableName="tickets" constraintName="FK_tareas_tickets" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tareas" validate="true"/>        
+    </changeSet> 
+</databaseChangeLog>

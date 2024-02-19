@@ -1,0 +1,17 @@
+com\pj\workorders\repository\tecnicosRepository.class
+com\pj\workorders\repository\impl\TenantRepoImpl.class
+com\pj\workorders\web\tecnicosController.class
+com\pj\workorders\web\tareasController.class
+com\pj\workorders\enums\GenStatus.class
+com\pj\workorders\repository\ticketsRepository.class
+com\pj\workorders\dto\ticketsDTO.class
+com\workorders\workordersApplication.class
+com\pj\workorders\web\ticketsController.class
+com\pj\workorders\domain\tareas.class
+com\pj\workorders\repository\tareasRepository.class
+com\pj\workorders\dto\tecnicosDTO.class
+com\pj\workorders\repository\impl\tecnicosRepoImpl.class
+com\pj\workorders\repository\impl\ticketsRepoImpl.class
+com\pj\workorders\domain\tickets.class
+com\pj\workorders\dto\tareasDTO.class
+com\pj\workorders\domain\tecnicos.class

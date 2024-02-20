@@ -51,15 +51,15 @@ public class tecnicosController {
     }
 
     // crea un tecnico fijo para tener informacion
-   @PostMapping(path = "/create")
-    public tecnicosDTO createtecnicos() {
-        tecnicos tecnicos = new tecnicos();
-        tecnicos.setUsuario("dulce");
-        tecnicos.setNombre("Dulce Guadalupe Romero");
-        tecnicos.setPuesto("Programador");
-        tecnicosRepository.saveAndFlush(tecnicos);
-        return modelMapper.map(tecnicos, tecnicosDTO.class);
-     }   
+  // @PostMapping(path = "/create")
+    //public tecnicosDTO createtecnicos() {
+    //    tecnicos tecnicos = new tecnicos();
+    //    tecnicos.setUsuario("dulce");
+    //    tecnicos.setNombre("Dulce Guadalupe Romero");
+    //    tecnicos.setPuesto("Programador");
+    //    tecnicosRepository.saveAndFlush(tecnicos);
+    //    return modelMapper.map(tecnicos, tecnicosDTO.class);
+    // }   
     
     @GetMapping(path = "/listar")
     // listado de todos los tecnicos no regrea el id

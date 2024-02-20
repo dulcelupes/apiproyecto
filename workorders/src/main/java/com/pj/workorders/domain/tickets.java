@@ -33,7 +33,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "tickets")
-@Data
+
 public class tickets implements Serializable{
     
     @Id
@@ -41,11 +41,11 @@ public class tickets implements Serializable{
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tecnicos_id", nullable = false)
     private tecnicos tecnicos;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tareas_id", nullable = false)
     private tareas tareas;    
 

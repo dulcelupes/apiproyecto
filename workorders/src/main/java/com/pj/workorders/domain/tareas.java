@@ -21,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "tareas")
-@Data
+
 public class tareas implements Serializable {
 
     @Id

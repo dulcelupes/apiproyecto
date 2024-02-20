@@ -9,6 +9,7 @@ import com.pj.workorders.domain.tareas;
 import com.pj.workorders.domain.tecnicos;
 import com.pj.workorders.domain.tickets;
 import com.pj.workorders.dto.ticketsDTO;
+import com.pj.workorders.dto.ticketsRespDTO;
 import com.pj.workorders.enums.GenStatus;
 import com.pj.workorders.repository.impl.ticketsRepoImpl;
 import com.pj.workorders.repository.tareasRepository;
@@ -17,6 +18,10 @@ import com.pj.workorders.repository.ticketsRepository;
 import java.text.ParseException;
 import java.util.List;
 import java.util.stream.StreamSupport;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,7 +54,6 @@ public class ticketsController {
     @Autowired
     private tecnicosRepository tecnicosRepo;
     
-    
     public ticketsController(ticketsRepository ticketsRepository) {
         this.ticketsRepository = ticketsRepository;
     }       
@@ -78,10 +82,27 @@ public class ticketsController {
     }    
     
     //@GetMapping("/tickets-por-tecnico")
-    //public List<tickets> getListar(@RequestParam(required = true) Long idtecnico) {
-    //    tecnicos tecnicos = tecnicosRepo.findById(idtecnico).get();
-    //    return ticketsRepository.getticketsBytecnicos(tecnicos);
+    //public ticketsRespDTO[] getListar(@RequestParam(required = true) Long idtecnico) {
+    //    tecnicos t = tecnicosRepo.findById(idtecnico).get();
+    //    if  (t != null && t.getId() != null){
+    //        List<tickets> list = ticketsRepository.findTicketsByTecnico(t.getId());
+    //        return regresaDTO(list);
+    //    } else {
+    //        return null;
+    //    }
     //}    
+
+    @GetMapping("/tickets-por-tecnico")
+    public List<tickets> getListar(@RequestParam(required = true) Long idtecnico) {
+        tecnicos t = tecnicosRepo.findById(idtecnico).get();
+        if  (t != null && t.getId() != null){
+            List<tickets> list = ticketsRepository.findTicketsByTecnico(t.getId());
+            return list;
+        } else {
+            return null;
+        }
+    }    
+    
     
     @PutMapping("/cambiar-status/{idticket}/{status}")
     public tickets updateTickets(@RequestParam Long idticket, @RequestParam GenStatus estatus) {
@@ -89,6 +110,16 @@ public class ticketsController {
         t.setStatus(estatus);
         return ticketsRepository.save(t);
     }
+    
+    @GetMapping("/listar-por-status/{status}")
+    public List<tickets> getPorStatus(@RequestParam GenStatus estatus) {
+        if  (estatus != null){
+            List<tickets> list = ticketsRepository.findTicketsByStatus(estatus);
+            return list;
+        } else {
+            return null;
+        }
+    }    
     
     @GetMapping(path = "/list")
     public List<tickets> finAll() {
@@ -113,9 +144,26 @@ public class ticketsController {
         }
      }
     
+    public ticketsRespDTO[] regresaDTO(List<tickets> listado) {
+        if  (listado.isEmpty()){
+            return null;
+        }
+        
+        try {
+
+            ticketsRespDTO[] dtos = StreamSupport.stream(listado.spliterator(), false)
+                    .map(e -> convertir(e))
+                    .toArray(s -> new ticketsRespDTO[s]);
+
+            return dtos;
+        } catch (RuntimeException ex) {
+            //throw new RuntimeException("No se puede mostrar el listado de tickets, revise la documentacion");
+                throw ex;
+        }
+     }
+    
     private ticketsDTO convertir(tickets t) {
         ticketsDTO post = modelMapper.map(t, ticketsDTO.class);
         return post;
     }
-    
 }

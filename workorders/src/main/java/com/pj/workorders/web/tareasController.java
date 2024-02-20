@@ -57,17 +57,6 @@ public class tareasController {
         return tareasRepository.findAll();
     }    
     
-    // crea una tarea fijo para tener informacion
-   @PostMapping(path = "/create")
-    public tareasDTO tareas() {
-        tareas tareas = new tareas();
-        tareas.setDescripcion("El sistema no tiene autenticacion");
-        tareas.setFechaCreacion(new Date());
-        tareas.setStatus(GenStatus.ACTIVO);
-        tareasRepository.saveAndFlush(tareas);
-        tareasDTO t = modelMapper.map(tareas, tareasDTO.class);
-        return t;
-    }
     
     @GetMapping(path = "/listar")
     // listado de todos los tareas

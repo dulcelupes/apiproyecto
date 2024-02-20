@@ -5,13 +5,16 @@ C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\web\ticketsController.
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\dto\ticketsDTO.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\enums\GenStatus.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\dto\tareasDTO.java
+C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\dto\ticketsRespDTO.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\repository\impl\TenantRepoImpl.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\repository\impl\ticketsRepoImpl.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\dto\tecnicosDTO.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\repository\tareasRepository.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\web\tareasController.java
+C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\dto\tareasRespDTO.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\repository\impl\tecnicosRepoImpl.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\domain\tareas.java
+C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\dto\tecnicosRespDTO.java
 C:\ApiProyecto\workorders\src\main\java\com\workorders\workordersApplication.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\repository\tecnicosRepository.java
 C:\ApiProyecto\workorders\src\main\java\com\pj\workorders\domain\tecnicos.java

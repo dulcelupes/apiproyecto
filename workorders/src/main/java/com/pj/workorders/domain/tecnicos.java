@@ -14,7 +14,6 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Data
 @Table(name = "tecnicos")
 
 public class tecnicos implements Serializable {
